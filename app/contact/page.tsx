@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import ContactForm from "@/components/ContactForm";
 
 export default function ContactPage() {
   return (
@@ -116,24 +117,10 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Contact Form Placeholder */}
+            {/* Contact Form */}
             <div>
               <h2 className="text-3xl font-bold mb-8">Send Us a Message</h2>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <div className="text-center py-8">
-                  <h3 className="text-xl font-bold mb-4">Our contact form is coming soon!</h3>
-                  <p className="mb-6">
-                    In the meantime, please reach out to us via email at 
-                    <a href="mailto:info@delightfulbean.com" className="text-accent hover:underline ml-1">
-                      info@delightfulbean.com
-                    </a> 
-                    or call us at 
-                    <a href="tel:7274579941" className="text-accent hover:underline ml-1">
-                      (727) 457-9941
-                    </a>.
-                  </p>
-                </div>
-              </div>
+              <ContactForm />
             </div>
           </div>
         </div>
