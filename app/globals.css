@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FAFAFA;
+  --foreground: #333333;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+@layer base {
+  h1 {
+    @apply text-4xl font-bold mb-6 text-primary;
+  }
+  h2 {
+    @apply text-3xl font-bold mb-4 text-primary;
+  }
+  h3 {
+    @apply text-2xl font-semibold mb-3 text-primary;
+  }
+  h4 {
+    @apply text-xl font-semibold mb-2 text-primary;
+  }
+  p {
+    @apply mb-4 text-charcoal;
+  }
+  a {
+    @apply text-accent hover:text-accent-dark transition-colors;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-200 inline-block;
+  }
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark;
+  }
+  .btn-secondary {
+    @apply bg-secondary text-primary hover:bg-secondary-dark;
+  }
+  .btn-accent {
+    @apply bg-accent text-white hover:bg-accent-dark;
+  }
+  .btn-highlight {
+    @apply bg-highlight text-white hover:bg-highlight-dark;
+  }
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .section {
+    @apply py-12 md:py-20;
+  }
+  .card {
+    @apply bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
