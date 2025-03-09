@@ -22,3 +22,30 @@ Untracked files:
 no changes added to commit (use "git add" and/or "git commit -a")
  
 Adding all files to Git... 
+warning: in the working copy of 'package-lock.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'public/robots.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'public/sitemap-0.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'public/sitemap.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'push-log.txt', LF will be replaced by CRLF the next time Git touches it
+ 
+Committing changes... 
+[main 55d15f4] Add sitemap generation for SEO
+ 9 files changed, 118 insertions(+), 1 deletion(-)
+ create mode 100644 next-sitemap.config.js
+ create mode 100644 public/robots.txt
+ create mode 100644 public/sitemap-0.xml
+ create mode 100644 public/sitemap.xml
+ create mode 100644 push-log.txt
+ 
+Setting remote repository... 
+ 
+Pushing to GitHub master branch... 
+error: src refspec master does not match any
+error: failed to push some refs to 'https://github.com/coolpeter2025/Delightful-Bean-Coffee-Cart.git'
+ 
+If master branch fails, trying main branch... 
+remote: Repository not found.
+fatal: repository 'https://github.com/coolpeter2025/Delightful-Bean-Coffee-Cart.git/' not found
+ 
+GitHub push process completed. Check push-log.txt for details. 
