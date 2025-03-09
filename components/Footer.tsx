@@ -23,11 +23,24 @@ const Footer = () => {
             <p className="text-secondary-light mb-4">
               Premium coffee cart rental services for birthdays, weddings, and private parties in Tampa Bay, Florida.
             </p>
-            <p className="text-secondary-light">
+            <p className="text-secondary-light mb-2">
               <a href="tel:7274579941" className="hover:text-white transition-colors">
                 (727) 457-9941
               </a>
             </p>
+            <p className="text-secondary-light mb-2">
+              <a href="mailto:info@delightfulbean.com" className="hover:text-white transition-colors">
+                info@delightfulbean.com
+              </a>
+            </p>
+            <div className="flex space-x-4 mt-4">
+              <a href="https://www.facebook.com/profile.php?id=61565827048649" target="_blank" rel="noopener noreferrer" className="text-secondary-light hover:text-white transition-colors">
+                Facebook
+              </a>
+              <a href="https://www.instagram.com/delightful.bean" target="_blank" rel="noopener noreferrer" className="text-secondary-light hover:text-white transition-colors">
+                Instagram
+              </a>
+            </div>
           </div>
 
           {/* Services */}
