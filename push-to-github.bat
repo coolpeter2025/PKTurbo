@@ -16,7 +16,7 @@ git commit -m "Add sitemap generation for SEO" >> push-log.txt 2>&1
 echo. >> push-log.txt
 
 echo Setting remote repository... >> push-log.txt
-git remote set-url origin https://github.com/coolpeter2025/Delightful-Bean-Coffee-Cart.git >> push-log.txt 2>&1
+git remote set-url origin https://github.com/coolpeter2025/coffee.git >> push-log.txt 2>&1
 echo. >> push-log.txt
 
 echo Pushing to GitHub master branch... >> push-log.txt
