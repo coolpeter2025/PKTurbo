@@ -12,7 +12,7 @@ git add . >> push-log.txt 2>&1
 echo. >> push-log.txt
 
 echo Committing changes... >> push-log.txt
-git commit -m "Fix Next.js version and configuration issues" >> push-log.txt 2>&1
+git commit -m "Add sitemap generation for SEO" >> push-log.txt 2>&1
 echo. >> push-log.txt
 
 echo Setting remote repository... >> push-log.txt
