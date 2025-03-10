@@ -14,16 +14,17 @@
     "@supabase/supabase-js": "2.49.1",
     "dotenv": "16.4.7",
     "next": "14.2.24",
+    "nodemailer": "6.10.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@types/node": "20.11.5",
+    "@types/nodemailer": "6.4.17",
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
     "eslint": "8.56.0",
     "eslint-config-next": "14.0.4",
-    "next": "14.2.24",
     "next-sitemap": "4.2.3",
     "postcss": "8.4.33",
     "tailwindcss": "3.4.1",
