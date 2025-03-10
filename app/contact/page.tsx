@@ -199,14 +199,14 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section bg-accent text-white">
+      {/* CTA Section - Modern Monochrome */}
+      <section className="section bg-gray-100 text-gray-900">
         <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Book Your Coffee Cart?</h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Ready to Book Your Coffee Cart?</h2>
+          <p className="text-xl mb-8 max-w-3xl mx-auto text-gray-700">
             Contact us today to check availability and get a custom quote for your event.
           </p>
-          <a href="tel:7274579941" className="btn bg-white text-accent hover:bg-secondary">
+          <a href="tel:7274579941" className="btn bg-black text-white hover:bg-gray-800 transition-colors">
             Call (727) 457-9941
           </a>
         </div>
