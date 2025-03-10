@@ -32,6 +32,15 @@ export const metadata: Metadata = {
       "x-default": "https://delightfulbean.com",
     },
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/images/Delighfulbean.logo.png', type: 'image/png' }
+    ],
+    apple: [
+      { url: '/images/Delighfulbean.logo.png' }
+    ]
+  },
 };
 
 export default function RootLayout({
