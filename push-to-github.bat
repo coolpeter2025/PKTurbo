@@ -12,7 +12,7 @@ git add . >> push-log.txt 2>&1
 echo. >> push-log.txt
 
 echo Committing changes... >> push-log.txt
-git commit -m "Add Supabase keep-alive workflow" >> push-log.txt 2>&1
+git commit -m "Add Supabase keep-alive workflow and Google site verification" >> push-log.txt 2>&1
 echo. >> push-log.txt
 
 echo Setting remote repository... >> push-log.txt
