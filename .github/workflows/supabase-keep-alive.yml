@@ -1,0 +1,20 @@
+name: Supabase Keep Alive
+
+on:
+  schedule:
+    - cron: '0 9 * * *'  # Runs at 9:00 AM UTC every day
+  workflow_dispatch:      # Allows manual triggering through GitHub UI
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Ping Supabase
+        uses: jps27cse/supabase-keep-alive@main
+        with:
+          supabase_url: ${{ secrets.SUPABASE_URL }}
+          supabase_service_role_key: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          table_name: contact_submissions  # Using the existing contact submissions table

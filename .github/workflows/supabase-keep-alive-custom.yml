@@ -1,0 +1,62 @@
+name: Supabase Keep Alive (Custom)
+
+on:
+  schedule:
+    - cron: '0 9 * * *'  # Runs at 9:00 AM UTC every day
+  workflow_dispatch:      # Allows manual triggering through GitHub UI
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          
+      - name: Install Supabase Client
+        run: npm install @supabase/supabase-js
+
+      - name: Ping Supabase Database
+        run: |
+          node -e "
+          const { createClient } = require('@supabase/supabase-js');
+
+          // Initialize Supabase client with GitHub secrets
+          const supabaseUrl = '${{ secrets.SUPABASE_URL }}';
+          const supabaseKey = '${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}';
+          const supabase = createClient(supabaseUrl, supabaseKey);
+
+          async function pingDatabase() {
+            console.log('🔄 Running Supabase keep-alive...');
+            console.log(`🔗 Connecting to: ${supabaseUrl}`);
+            
+            try {
+              // Query the contact_submissions table
+              const { data, error, count } = await supabase
+                .from('contact_submissions')
+                .select('id', { count: 'exact' })
+                .limit(1);
+              
+              if (error) throw error;
+              
+              console.log('✅ Connection successful!');
+              console.log(`📊 Found ${count} total records in contact_submissions table`);
+              console.log('🟢 Supabase keep-alive completed successfully');
+              
+              // Output record ID if available
+              if (data && data.length > 0) {
+                console.log(`📝 Sample record ID: ${data[0].id}`);
+              }
+            } catch (error) {
+              console.error('❌ Error connecting to Supabase:', error.message);
+              process.exit(1);
+            }
+          }
+
+          // Run the function
+          pingDatabase();
+          "
