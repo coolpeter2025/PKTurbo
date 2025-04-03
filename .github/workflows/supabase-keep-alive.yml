@@ -44,12 +44,14 @@ jobs:
               if (error) throw error;
               
               console.log('✅ Connection successful!');
-              console.log(`📊 Found ${count} total records in contact_submissions table`);
+              console.log(`📊 Found ${count || 0} total records in contact_submissions table`);
               console.log('🟢 Supabase keep-alive completed successfully');
               
               // Output record ID if available
               if (data && data.length > 0) {
                 console.log(`📝 Sample record ID: ${data[0].id}`);
+              } else {
+                console.log('⚠️ No records found, but connection was successful');
               }
             } catch (error) {
               console.error('❌ Error connecting to Supabase:', error.message);
@@ -57,6 +59,9 @@ jobs:
             }
           }
 
-          // Run the function
-          pingDatabase();
+          // Run the function and handle any uncaught errors
+          pingDatabase().catch(err => {
+            console.error('❌ Uncaught error:', err);
+            process.exit(1);
+          });
           "
