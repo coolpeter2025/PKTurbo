@@ -19,52 +19,12 @@ jobs:
           
       - name: Install Supabase Client
         run: npm install @supabase/supabase-js
-
+      
       - name: Verify Supabase Client Installation
         run: npm list @supabase/supabase-js
 
       - name: Ping Supabase Database
-        run: |
-          node -e "
-          const { createClient } = require('@supabase/supabase-js');
-
-          // Initialize Supabase client with GitHub secrets
-          const supabaseUrl = '${{ secrets.SUPABASE_URL }}';
-          const supabaseKey = '${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}';
-          const supabase = createClient(supabaseUrl, supabaseKey);
-
-          async function pingDatabase() {
-            console.log('🔄 Running Supabase keep-alive...');
-            console.log(`🔗 Connecting to: ${supabaseUrl}`);
-            
-            try {
-              // Query the contact_submissions table
-              const { data, error, count } = await supabase
-                .from('contact_submissions')
-                .select('id', { count: 'exact' })
-                .limit(1);
-              
-              if (error) throw error;
-              
-              console.log('✅ Connection successful!');
-              console.log(`📊 Found ${count || 0} total records in contact_submissions table`);
-              console.log('🟢 Supabase keep-alive completed successfully');
-              
-              // Output record ID if available
-              if (data && data.length > 0) {
-                console.log(`📝 Sample record ID: ${data[0].id}`);
-              } else {
-                console.log('⚠️ No records found, but connection was successful');
-              }
-            } catch (error) {
-              console.error('❌ Error connecting to Supabase:', error.message);
-              process.exit(1);
-            }
-          }
-
-          // Run the function and handle any uncaught errors
-          pingDatabase().catch(err => {
-            console.error('❌ Uncaught error:', err);
-            process.exit(1);
-          });
-          "
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/keep-alive.js
