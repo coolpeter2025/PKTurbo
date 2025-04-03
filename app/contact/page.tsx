@@ -33,7 +33,7 @@ export default function ContactPage() {
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}
-            <div>
+            <div className="order-2 lg:order-1">
               <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
               
               <div className="mb-8">
@@ -115,7 +115,7 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <div>
+            <div className="order-1 lg:order-2">
               <h2 className="text-3xl font-bold mb-8">Send Us a Message</h2>
               <ContactForm />
             </div>

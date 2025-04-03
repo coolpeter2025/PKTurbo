@@ -10,6 +10,7 @@ const ContactForm = () => {
     eventDate: "",
     eventType: "",
     guestCount: "",
+    referralSource: "",
     message: "",
   });
 
@@ -71,6 +72,7 @@ const ContactForm = () => {
         eventDate: "",
         eventType: "",
         guestCount: "",
+        referralSource: "",
         message: "",
       });
     } catch (error) {
@@ -211,6 +213,27 @@ const ContactForm = () => {
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent"
               />
             </div>
+          </div>
+
+          <div>
+            <label htmlFor="referralSource" className="block text-sm font-medium text-gray-700 mb-1">
+              How did you hear about us?
+            </label>
+            <select
+              id="referralSource"
+              name="referralSource"
+              value={formData.referralSource}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent"
+            >
+              <option value="">Select an option</option>
+              <option value="Google">Google</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Friend/Family">Friend or Family</option>
+              <option value="Event">Saw you at an event</option>
+              <option value="Website">Website</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
 
           <div>
