@@ -59,6 +59,7 @@ const sendEmailNotification = async (formData: any) => {
         <p><strong>Event Date:</strong> ${formData.eventDate || 'Not specified'}</p>
         <p><strong>Event Type:</strong> ${formData.eventType || 'Not specified'}</p>
         <p><strong>Guest Count:</strong> ${formData.guestCount || 'Not specified'}</p>
+        <p><strong>How did they hear about us:</strong> ${formData.referralSource || 'Not specified'}</p>
         <p><strong>Message:</strong> ${formData.message}</p>
         <p><strong>Submitted at:</strong> ${new Date().toLocaleString()}</p>
       `,
@@ -87,6 +88,7 @@ export async function POST(request: Request) {
           event_date: formData.eventDate,
           event_type: formData.eventType,
           guest_count: formData.guestCount ? parseInt(formData.guestCount) : null,
+          referral_source: formData.referralSource,
           message: formData.message,
         }
       ]);
