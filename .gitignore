@@ -37,5 +37,5 @@ yarn-error.log*
 next-env.d.ts
 
 # supabase files (removed)
-/supabase/
+# /supabase/  <- Temporarily commented out to allow tracking Edge Functions
 /utils/supabase.ts
