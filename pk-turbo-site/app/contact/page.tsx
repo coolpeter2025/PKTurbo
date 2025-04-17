@@ -29,8 +29,8 @@ export default function ContactPage() {
                   <div>
                     <p className="font-medium">Address</p>
                     <p className="text-gray-600">
-                      123 Logistics Way<br />
-                      New York, NY 10001
+                      1135 Four Lakes Dr a1,<br/>
+                      Matthews, NC 28105
                     </p>
                   </div>
                 </div>
@@ -43,7 +43,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-medium">Phone</p>
-                    <p className="text-gray-600">(555) 123-4567</p>
+                    <p className="text-gray-600">OFFICE (877)-505-0091</p>
+                    <p className="text-gray-600">FAX (888)-505-0503</p>
                   </div>
                 </div>
                 
@@ -69,9 +70,7 @@ export default function ContactPage() {
                   <div>
                     <p className="font-medium">Business Hours</p>
                     <p className="text-gray-600">
-                      Monday - Friday: 8:00 AM - 6:00 PM<br />
-                      Saturday: 9:00 AM - 1:00 PM<br />
-                      Sunday: Closed
+                      24 Hours a Day / 7 Days a Week
                     </p>
                   </div>
                 </div>
