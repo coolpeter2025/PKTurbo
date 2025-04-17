@@ -1,0 +1,6 @@
+# robots.txt file for PK Turbo LLC website
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://pkturbollc.com/sitemap.xml
