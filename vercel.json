@@ -3,12 +3,9 @@
   "framework": "nextjs",
   "builds": [
     {
-      "src": "next.config.js",
-      "use": "@vercel/next",
-      "config": {
-        "nextVersion": "14.2.24",
-        "skipBuildSteps": ["typeCheck", "lintCheck", "staticGeneration"]
-      }
+      "src": "pk-turbo-site/next.config.mjs",
+      "use": "@vercel/next"
     }
-  ]
+  ],
+  "outputDirectory": "pk-turbo-site/.next"
 }
