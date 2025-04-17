@@ -1,11 +1,9 @@
 {
   "version": 2,
-  "framework": "nextjs",
   "builds": [
     {
-      "src": "pk-turbo-site/next.config.mjs",
+      "src": "pk-turbo-site/package.json",
       "use": "@vercel/next"
     }
-  ],
-  "outputDirectory": "pk-turbo-site/.next"
+  ]
 }
