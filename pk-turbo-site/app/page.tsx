@@ -47,9 +47,9 @@ export default function Home() {
         <div className="container">
           <h2 className="text-4xl font-bold text-center mb-3 text-navy-dark">How We Serve You</h2>
           <div className="w-24 h-1 bg-amber-400 mx-auto mb-12"></div>
-          <p className="text-center max-w-3xl mx-auto mb-16 text-black font-bold">
-            Our company focuses on providing reliable transportation services with efficiency and professionalism to meet all your delivery needs.
-          </p>
+            <p className="text-center max-w-3xl mx-auto mb-16 text-black font-bold">
+              Our expedited trucking company focuses on providing reliable transportation services with efficiency and professionalism to meet all your delivery needs.
+            </p>
           
           <div className="grid md:grid-cols-3 gap-8">
             {/* Service 1 */}
@@ -61,7 +61,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold text-center mb-4 text-navy-dark">Reliable Delivery</h3>
               <p className="text-center text-navy-dark font-medium">
-                Our experienced drivers ensure your cargo arrives safely and on time, every time.
+                Our experienced drivers ensure your shipments arrive safely and on time, every time.
               </p>
             </div>
             
@@ -87,7 +87,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold text-center mb-4 text-white">Secure Transport</h3>
               <p className="text-center text-white font-medium">
-                Your cargo's safety is our priority, with secure handling and transportation protocols.
+                Your shipment's safety is our priority, with secure handling and transportation protocols.
               </p>
             </div>
           </div>
@@ -104,11 +104,11 @@ export default function Home() {
             <div className="md:w-1/2">
               <p className="mb-6 text-gray-700 leading-relaxed">
                 Founded in 2018, PK Turbo LLC has established itself as a trusted name in the transportation industry,
-                providing reliable and efficient delivery services to businesses throughout the region.
+                providing reliable and efficient expedited trucking services to businesses throughout the region.
               </p>
               <p className="mb-6 text-gray-700 leading-relaxed">
-                Our professional drivers are equipped to handle various transportation needs, ensuring your cargo reaches 
-                its destination safely and on time. We pride ourselves on our commitment to excellence, reliability, and 
+                Our professional drivers are equipped to handle various transportation needs, ensuring your shipments reach
+                their destination safely and on time. We pride ourselves on our commitment to excellence, reliability, and 
                 customer satisfaction.
               </p>
               <Link href="/contact" className="px-6 py-2 bg-amber-400 text-navy-dark font-medium rounded hover:bg-amber-500 transition inline-block">
