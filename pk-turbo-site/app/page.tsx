@@ -103,13 +103,10 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2">
               <p className="mb-6 text-gray-700 leading-relaxed">
-                Founded in 2018, PK Turbo LLC has established itself as a trusted name in the transportation industry,
-                providing reliable and efficient expedited trucking services to businesses throughout the region.
+                PK Turbo LLC is a trusted name in the transportation industry, specializing in reliable and efficient expedited trucking services. We cater to businesses throughout the region requiring time-sensitive deliveries and dedicated transport solutions.
               </p>
               <p className="mb-6 text-gray-700 leading-relaxed">
-                Our professional drivers are equipped to handle various transportation needs, ensuring your shipments reach
-                their destination safely and on time. We pride ourselves on our commitment to excellence, reliability, and 
-                customer satisfaction.
+                Our professional drivers understand the urgency of expedited freight. They are equipped to handle diverse transportation needs, ensuring your critical shipments reach their destination safely and promptly. We pride ourselves on our commitment to excellence, speed, reliability, and complete customer satisfaction for every expedited delivery.
               </p>
               <Link href="/contact" className="px-6 py-2 bg-amber-400 text-navy-dark font-medium rounded hover:bg-amber-500 transition inline-block">
                 Learn More About Us
