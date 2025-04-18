@@ -49,12 +49,7 @@ async function testApplicationSubmission() {
     drivingExperience: 'I have 5 years of experience driving commercial vehicles including Class A CDL.',
   };
   
-  // Log the sample resume path (but we're not using it as the API now expects JSON)
-  const sampleResumePath = path.join(__dirname, 'sample-resume.txt');
-  if (fs.existsSync(sampleResumePath)) {
-    console.log('📎 Sample resume file exists at:', sampleResumePath);
-    console.log('Note: Resume file upload has been removed from the API');
-  }
+  // No resume attachment functionality
   
   try {
     console.log('📤 Submitting application data...');

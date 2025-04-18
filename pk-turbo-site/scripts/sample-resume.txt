@@ -1,0 +1,44 @@
+# Sample Resume
+
+## Personal Information
+**Name:** Test Applicant
+**Email:** test@example.com
+**Phone:** 555-123-4567
+**Address:** 123 Test Street, Test City, TS 12345
+
+## Professional Experience
+
+### Commercial Truck Driver | ABC Trucking Inc.
+*January 2020 - Present*
+- Safely transported cargo across multiple states
+- Maintained accurate logs and documentation
+- Performed regular vehicle inspections and maintenance checks
+- Consistently delivered cargo on schedule with zero incidents
+
+### Delivery Driver | XYZ Logistics
+*March 2015 - December 2019*
+- Delivered packages in urban and suburban areas
+- Managed route planning and optimization
+- Maintained excellent customer service standards
+- Handled cash transactions and electronic payments
+
+## Certifications
+- Class A Commercial Driver's License (CDL-A)
+- Hazardous Materials Endorsement (HazMat)
+- Transportation Worker Identification Credential (TWIC)
+- Defensive Driving Certification
+
+## Education
+**Commercial Driving Academy**
+*Commercial Driver's License Program, 2015*
+
+**City Community College**
+*Associate's Degree in Logistics, 2014*
+
+## Skills
+- Expert in operating various commercial vehicles
+- Excellent knowledge of DOT regulations
+- Proficient in GPS navigation systems
+- Basic vehicle maintenance and troubleshooting
+- Strong communication skills
+- Time management and organization
