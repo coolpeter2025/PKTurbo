@@ -21,7 +21,6 @@ export default function GalleryPage() {
       title: 'Cargo Vans',
       description: 'Perfect for smaller deliveries and urban areas with tight spaces.',
     },
-    // Removed Semi Truck entry
     {
       src: '/images/liftgate.png',
       alt: 'PK Turbo truck with liftgate',
@@ -39,6 +38,86 @@ export default function GalleryPage() {
       alt: 'PK Turbo truck in winter conditions',
       title: 'All-Weather Operations',
       description: 'Our professional drivers operate safely in all weather conditions.',
+    },
+    // New truck images
+    {
+      src: '/images/truck 1.jpg',
+      alt: 'PK Turbo truck on highway',
+      title: 'Highway Transport',
+      description: 'Our trucks provide reliable transport across major highways.',
+    },
+    {
+      src: '/images/truck 2.jpg',
+      alt: 'PK Turbo delivery truck',
+      title: 'Delivery Fleet',
+      description: 'Modern delivery trucks for timely and efficient service.',
+    },
+    {
+      src: '/images/truck 3.jpg',
+      alt: 'PK Turbo truck side view',
+      title: 'Expedited Freight',
+      description: 'Specialized vehicles for expedited freight delivery.',
+    },
+    {
+      src: '/images/truck 4.jpg',
+      alt: 'PK Turbo truck in operation',
+      title: 'Operational Excellence',
+      description: 'Our trucks are maintained to the highest standards of operational excellence.',
+    },
+    {
+      src: '/images/truck 5.jpg',
+      alt: 'PK Turbo medium duty truck',
+      title: 'Medium Duty Fleet',
+      description: 'Medium duty trucks for versatile transportation needs.',
+    },
+    {
+      src: '/images/truck 6.jpg',
+      alt: 'PK Turbo truck on city street',
+      title: 'Urban Delivery',
+      description: 'Navigating urban environments with ease and efficiency.',
+    },
+    {
+      src: '/images/truck 7.jpg',
+      alt: 'PK Turbo truck front view',
+      title: 'Front Line Fleet',
+      description: 'Our front line fleet is ready to serve your transportation needs.',
+    },
+    {
+      src: '/images/truck 8.jpg',
+      alt: 'PK Turbo truck loaded',
+      title: 'Full Load Capacity',
+      description: 'Optimized loading for maximum efficiency and safety.',
+    },
+    {
+      src: '/images/truck 9.jpg',
+      alt: 'PK Turbo truck in transit',
+      title: 'In Transit',
+      description: 'Reliable transit services across the region.',
+    },
+    {
+      src: '/images/Truck at night.jpg',
+      alt: 'PK Turbo truck operating at night',
+      title: 'Around-the-Clock Service',
+      description: 'We operate 24/7 to meet your delivery deadlines.',
+    },
+    // New cargo images
+    {
+      src: '/images/Cargo 3.jpg',
+      alt: 'PK Turbo cargo loading',
+      title: 'Cargo Handling',
+      description: 'Professional cargo handling for safe and secure transport.',
+    },
+    {
+      src: '/images/Cargo Boxes.jpg',
+      alt: 'PK Turbo boxed cargo',
+      title: 'Boxed Shipments',
+      description: 'Organized handling of boxed shipments of all sizes.',
+    },
+    {
+      src: '/images/Cargo Pallets.jpg',
+      alt: 'PK Turbo palletized cargo',
+      title: 'Palletized Transport',
+      description: 'Efficient transport of palletized goods and materials.',
     },
   ];
 
