@@ -27,9 +27,9 @@ export default function Home() {
               <span className="text-white"> LLC</span>
             </h1>
             <div className="w-24 h-1 bg-amber-400 mx-auto mb-8"></div>
-            <p className="text-xl mb-12 text-white drop-shadow-lg font-light">
-              Delivering Excellence with Speed, Reliability, and Professionalism
-            </p>
+              <p className="text-xl mb-12 text-white drop-shadow-lg">
+                Delivering Excellence with Speed, Reliability, and Professionalism
+              </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/contact" className="px-8 py-3 bg-amber-400 text-navy-dark font-medium rounded hover:bg-amber-500 transition">
                 GET A QUOTE
@@ -47,7 +47,7 @@ export default function Home() {
         <div className="container">
           <h2 className="text-4xl font-bold text-center mb-3 text-navy-dark">How We Serve You</h2>
           <div className="w-24 h-1 bg-amber-400 mx-auto mb-12"></div>
-            <p className="text-center max-w-3xl mx-auto mb-16 text-black font-bold">
+            <p className="text-center max-w-3xl mx-auto mb-16 text-gray-800 leading-relaxed">
               Our expedited trucking company specializes in seamless, coast-to-coast freight transportation across North America. With a focus on efficiency, reliability, and professionalism, we provide comprehensive logistics solutions tailored to your delivery needs. Whether shipping from New York to Los Angeles, Vancouver to Miami, or anywhere throughout the U.S. and Canada, our dependable, door-to-door service ensures your cargo arrives safely, securely, and promptly—every time.
             </p>
           
@@ -60,7 +60,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-center mb-4 text-navy-dark">Reliable Delivery</h3>
-              <p className="text-center text-navy-dark font-medium">
+              <p className="text-center text-navy-dark">
                 Our experienced drivers ensure your shipments arrive safely and on time, every time.
               </p>
             </div>
@@ -73,7 +73,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-center mb-4 text-white">Fast Turnaround</h3>
-              <p className="text-center text-white font-medium">
+              <p className="text-center text-white">
                 We specialize in quick deliveries, helping you meet tight deadlines with ease.
               </p>
             </div>
@@ -86,7 +86,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-center mb-4 text-white">Secure Transport</h3>
-              <p className="text-center text-white font-medium">
+              <p className="text-center text-white">
                 Your shipment's safety is our priority, with secure handling and transportation protocols.
               </p>
             </div>
@@ -131,7 +131,7 @@ export default function Home() {
       <section className="py-16 bg-navy-dark text-white">
         <div className="container text-center">
           <h2 className="text-3xl font-bold mb-4 text-white">Ready to Get Started?</h2>
-          <p className="mb-8 max-w-3xl mx-auto text-white font-bold">
+          <p className="mb-8 max-w-3xl mx-auto text-white">
             Contact us today to discuss your transportation needs and how PK Turbo LLC can help you
             with reliable, efficient, and professional delivery services.
           </p>
