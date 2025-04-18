@@ -44,39 +44,46 @@ export default function ApplicationForm() {
     setSubmitStatus({});
 
     try {
-      // In a real implementation, you would create a FormData object
-      // and append the resume file to send to the server
+      // Create FormData object for multipart/form-data (for file upload)
       const formData = new FormData();
+      
+      // Add all text fields
       Object.entries(data).forEach(([key, value]) => {
         formData.append(key, value);
       });
       
+      // Add resume file if selected
       if (resumeFile) {
         formData.append('resume', resumeFile);
       }
 
-      // Mock API call - in a real app, this would send to a server endpoint
-      // const response = await fetch('/api/apply', {
-      //   method: 'POST',
-      //   body: formData,
-      // });
+      // Send to API endpoint
+      const response = await fetch('/api/application', {
+        method: 'POST',
+        body: formData,
+        // Don't set Content-Type header; browser will set it with boundary for FormData
+      });
       
-      // For demo purposes, we'll simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit application');
+      }
       
       setSubmitStatus({
         success: true,
-        message: 'Thank you for your application! We will review it and contact you soon.',
+        message: result.message || 'Thank you for your application! We will review it and contact you soon.',
       });
       
+      // Reset form and file input
       reset();
       setResumeFile(null);
       
     } catch (error) {
-      console.error('Application form submission error:', error);
+      console.error('Application submission error:', error);
       setSubmitStatus({
         success: false,
-        message: 'There was an error submitting your application. Please try again later.',
+        message: error instanceof Error ? error.message : 'There was an error submitting your application. Please try again later.',
       });
     } finally {
       setIsSubmitting(false);
