@@ -8,5 +8,12 @@
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/pk-turbo-site/$1" }
-  ]
+  ],
+  "env": {
+    "NEXT_PUBLIC_SUPABASE_URL": "@next_public_supabase_url",
+    "SUPABASE_KEY": "@supabase_key",
+    "EMAIL_USER": "pkturbollc@gmail.com",
+    "EMAIL_PASSWORD": "@email_password",
+    "NOTIFICATION_EMAIL": "operations@pkturbollc.com"
+  }
 }

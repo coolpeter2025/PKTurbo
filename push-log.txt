@@ -6,46 +6,34 @@ Your branch is up to date with 'origin/main'.
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-	modified:   .env
-	modified:   package-lock.json
-	modified:   package.json
-	modified:   push-to-github.bat
+	modified:   pk-turbo-site/app/api/contact/route.ts
+	modified:   pk-turbo-site/package-lock.json
+	modified:   pk-turbo-site/package.json
+	modified:   push-log.txt
+	modified:   vercel.json
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-	next-sitemap.config.js
-	public/robots.txt
-	public/sitemap-0.xml
-	public/sitemap.xml
-	push-log.txt
+	UserszampiDocumentsClineMCPfetch-mcp/
+	check-fetch-mcp-status.js
+	check-fetch-mcp-status.mjs
+	check-mcp-servers.js
+	check-mcp-servers.mjs
+	check-mcp-status.js
+	fix-all-mcp-servers.js
+	fix-git-server.js
+	fix-supabase-server.js
+	fix-weather-server.js
+	mcp-server-fixes.md
+	mcp-server-guide.md
+	mcp-server-status.md
+	pk-turbo-site/.env.local.example
+	pk-turbo-site/docs/
+	pk-turbo-site/scripts/
+	private-repository-guidance.md
+	push-to-github-nodemailer.bat
+	test-weather-server.js
 
 no changes added to commit (use "git add" and/or "git commit -a")
  
 Adding all files to Git... 
-warning: in the working copy of 'package-lock.json', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'public/robots.txt', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'public/sitemap-0.xml', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'public/sitemap.xml', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'push-log.txt', LF will be replaced by CRLF the next time Git touches it
- 
-Committing changes... 
-[main 55d15f4] Add sitemap generation for SEO
- 9 files changed, 118 insertions(+), 1 deletion(-)
- create mode 100644 next-sitemap.config.js
- create mode 100644 public/robots.txt
- create mode 100644 public/sitemap-0.xml
- create mode 100644 public/sitemap.xml
- create mode 100644 push-log.txt
- 
-Setting remote repository... 
- 
-Pushing to GitHub master branch... 
-error: src refspec master does not match any
-error: failed to push some refs to 'https://github.com/coolpeter2025/Delightful-Bean-Coffee-Cart.git'
- 
-If master branch fails, trying main branch... 
-remote: Repository not found.
-fatal: repository 'https://github.com/coolpeter2025/Delightful-Bean-Coffee-Cart.git/' not found
- 
-GitHub push process completed. Check push-log.txt for details. 
