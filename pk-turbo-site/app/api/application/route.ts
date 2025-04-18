@@ -15,7 +15,7 @@ if (!supabaseUrl || !supabaseServiceKey) {
 const supabase = createClient(supabaseUrl!, supabaseServiceKey!);
 
 // Function to send email notification for applications
-const sendApplicationEmail = async (data: any, resumeUrl?: string) => {
+const sendApplicationEmail = async (data: any) => {
   console.log('Sending application notification via Nodemailer...');
   
   // Check for required environment variables
@@ -71,7 +71,7 @@ const sendApplicationEmail = async (data: any, resumeUrl?: string) => {
           <p style="white-space: pre-line;">${data.drivingExperience || 'Not provided'}</p>
         </div>
         
-        ${resumeUrl ? `<p><strong>Resume:</strong> <a href="${resumeUrl}">Download Resume</a></p>` : ''}
+        <!-- Resume field removed as requested -->
         
         <p style="color: #777; font-size: 0.8em;">Submitted on ${timestamp}</p>
       </div>
@@ -94,35 +94,7 @@ const sendApplicationEmail = async (data: any, resumeUrl?: string) => {
   }
 };
 
-// Function to upload resume file to Supabase
-const uploadResumeToSupabase = async (file: Buffer, filename: string, contentType: string) => {
-  // Generate a unique filename to prevent collisions
-  const timestamp = Date.now();
-  const safeName = filename.replace(/[^a-z0-9.]/gi, '_').toLowerCase();
-  const uniqueFilename = `${timestamp}_${safeName}`;
-  
-  try {
-    const { data, error } = await supabase.storage
-      .from('resumes')
-      .upload(uniqueFilename, file, {
-        contentType,
-        cacheControl: '3600'
-      });
-      
-    if (error) throw error;
-    
-    // Get the public URL for the file
-    const { data: urlData } = supabase.storage
-      .from('resumes')
-      .getPublicUrl(uniqueFilename);
-      
-    return urlData.publicUrl;
-    
-  } catch (error) {
-    console.error('Resume upload error:', error);
-    throw error;
-  }
-};
+// Resume upload functionality removed as requested
 
 export async function POST(request: NextRequest) {
   // Check if Supabase client initialized correctly
@@ -148,8 +120,7 @@ export async function POST(request: NextRequest) {
     const felony = formData.get('felony') as string;
     const drivingExperience = formData.get('drivingExperience') as string;
     
-    // Get resume file if it exists
-    const resumeFile = formData.get('resume') as File | null;
+    // Resume file upload removed as requested
     
     // Validate required fields
     if (!fullName || !phoneNumber || !email || !dateOfBirth || !address || 
@@ -170,38 +141,7 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // Upload resume if provided
-    let resumeUrl: string | undefined;
-    if (resumeFile && resumeFile.size > 0) {
-      // Size validation
-      if (resumeFile.size > 5 * 1024 * 1024) { // 5MB limit
-        return NextResponse.json(
-          { error: 'Resume file exceeds 5MB limit' },
-          { status: 400 }
-        );
-      }
-      
-      // Type validation
-      const allowedTypes = [
-        'application/pdf',
-        'application/msword',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'text/plain' // Allow plain text files for testing
-      ];
-      if (!allowedTypes.includes(resumeFile.type)) {
-        return NextResponse.json(
-          { error: 'Invalid file type. Only PDF, Word documents, and plain text files are allowed.' },
-          { status: 400 }
-        );
-      }
-      
-      // Convert File to Buffer for upload
-      const arrayBuffer = await resumeFile.arrayBuffer();
-      const buffer = Buffer.from(arrayBuffer);
-      
-      // Upload to Supabase
-      resumeUrl = await uploadResumeToSupabase(buffer, resumeFile.name, resumeFile.type);
-    }
+    // Resume file upload functionality removed as requested
     
     // Create application object
     const applicationData = {
@@ -217,7 +157,7 @@ export async function POST(request: NextRequest) {
       dui: dui,
       felony: felony,
       driving_experience: drivingExperience || null,
-      resume_url: resumeUrl || null
+      // Resume URL field removed as requested
     };
     
     let submission = null;
@@ -278,7 +218,7 @@ export async function POST(request: NextRequest) {
       dui,
       felony,
       drivingExperience
-    }, resumeUrl);
+    });
     
     if (!emailResult.success) {
       console.warn('Email notification failed to send, but application was saved.', emailResult.error);
