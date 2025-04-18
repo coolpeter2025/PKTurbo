@@ -16,12 +16,24 @@ const supabase = createClient(supabaseUrl!, supabaseServiceKey!);
 
 // Function to send email notification for applications
 const sendApplicationEmail = async (data: any) => {
-  console.log('Sending application notification via Nodemailer...');
+  console.log('Attempting to send application notification via Nodemailer...');
   
   // Check for required environment variables
   const emailUser = process.env.EMAIL_USER;
   const emailPassword = process.env.EMAIL_PASSWORD;
   const notificationEmail = process.env.NOTIFICATION_EMAIL || 'operations@pkturbollc.com';
+  
+  // Log configuration (without showing full password)
+  console.log('Email configuration:');
+  console.log('- EMAIL_USER:', emailUser || 'not set');
+  if (emailPassword) {
+    const firstTwo = emailPassword.substring(0, 2);
+    const lastTwo = emailPassword.substring(emailPassword.length - 2);
+    console.log('- EMAIL_PASSWORD:', `${firstTwo}***${lastTwo} (${emailPassword.length} characters)`);
+  } else {
+    console.log('- EMAIL_PASSWORD: not set');
+  }
+  console.log('- NOTIFICATION_EMAIL:', notificationEmail);
   
   if (!emailUser || !emailPassword) {
     console.error('Email credentials missing in environment variables.');
@@ -29,17 +41,28 @@ const sendApplicationEmail = async (data: any) => {
   }
   
   try {
-    // Create transporter
+    // Create Nodemailer transporter using Gmail SMTP with debugging enabled
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: emailUser,
-        pass: emailPassword
+        pass: emailPassword // This should be an app password, not a regular password
       },
-      debug: process.env.NODE_ENV === 'development'
+      debug: process.env.NODE_ENV === 'development', // Enable debug output in development
+      logger: process.env.NODE_ENV === 'development'  // Log to console in development
     });
     
-    // Format timestamp
+    // Verify connection configuration
+    console.log('Verifying SMTP connection...');
+    try {
+      await transporter.verify();
+      console.log('SMTP connection verified successfully');
+    } catch (verifyError) {
+      console.error('SMTP connection verification failed:', verifyError);
+      console.log('Will attempt to send email anyway...');
+    }
+    
+    // Format the timestamp
     const timestamp = new Date().toLocaleString('en-US', {
       year: 'numeric',
       month: 'long',
@@ -48,7 +71,7 @@ const sendApplicationEmail = async (data: any) => {
       minute: '2-digit'
     });
     
-    // Create HTML template for application
+    // Create HTML email template
     const htmlContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e5e5e5; border-radius: 5px;">
         <h2 style="color: #333; border-bottom: 1px solid #e5e5e5; padding-bottom: 10px;">New Job Application Submission</h2>
@@ -71,30 +94,50 @@ const sendApplicationEmail = async (data: any) => {
           <p style="white-space: pre-line;">${data.drivingExperience || 'Not provided'}</p>
         </div>
         
-        <!-- Resume field removed as requested -->
-        
         <p style="color: #777; font-size: 0.8em;">Submitted on ${timestamp}</p>
       </div>
     `;
     
-    // Send email
-    const info = await transporter.sendMail({
+    // Plain text alternative for email clients that don't support HTML
+    const textContent = `
+New Job Application Submission:
+
+Full Name: ${data.fullName}
+Email: ${data.email}
+Phone: ${data.phoneNumber}
+Date of Birth: ${data.dateOfBirth}
+Address: ${data.address}
+Driver's License: ${data.driversLicenseNumber} (${data.driversLicenseState})
+License Expiration: ${data.driversLicenseExpiration}
+License Suspended/Revoked: ${data.licenseSuspended}
+DUI/DWI History: ${data.dui}
+Felony Conviction: ${data.felony}
+
+Driving Experience:
+${data.drivingExperience || 'Not provided'}
+
+Submitted on ${timestamp}
+    `.trim();
+    
+    // Configure email options
+    const mailOptions = {
       from: `"PK Turbo Applications" <${emailUser}>`,
       to: notificationEmail,
       subject: `New Job Application: ${data.fullName}`,
+      text: textContent,
       html: htmlContent
-    });
+    };
     
+    // Send the email
+    const info = await transporter.sendMail(mailOptions);
     console.log('Application email sent successfully:', info.messageId);
     return { success: true };
     
   } catch (error) {
-    console.error('Error sending application email:', error);
+    console.error('Error sending application email with Nodemailer:', error);
     return { success: false, error: error instanceof Error ? error.message : 'Unknown error' };
   }
 };
-
-// Resume upload functionality removed as requested
 
 export async function POST(request: NextRequest) {
   // Check if Supabase client initialized correctly
@@ -139,8 +182,6 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // Resume file upload functionality removed as requested
-    
     // Create application object
     const applicationData = {
       full_name: fullName,
@@ -160,6 +201,8 @@ export async function POST(request: NextRequest) {
     let submission = null;
     let insertError = null;
     
+    let dbSuccess = false;
+    
     try {
       // Insert into Supabase
       console.log('Inserting application into Supabase...');
@@ -175,33 +218,25 @@ export async function POST(request: NextRequest) {
       if (insertError) {
         console.error('Supabase insert error:', insertError);
         
-        // Check if it's a "relation does not exist" error
+        // We'll log the error but continue to send email
         if (insertError.message?.includes('relation') && insertError.message?.includes('does not exist')) {
-          return NextResponse.json(
-            { 
-              error: 'The Supabase table "PK_Turbo_Application" has not been created yet. Please run the SQL script in "supabase-application-table.sql" to create the necessary table.',
-              details: 'See instructions in docs/supabase-setup-guide.md'
-            },
-            { status: 500 }
-          );
+          console.error('The Supabase table "PK_Turbo_Application" has not been created yet. See instructions in docs/supabase-setup-guide.md');
         }
         
-        return NextResponse.json(
-          { error: 'Database error storing application.', details: insertError.message },
-          { status: 500 }
-        );
+        // We won't return an error here, just note that DB storage failed
+        dbSuccess = false;
+      } else {
+        console.log('Application stored successfully:', submission);
+        dbSuccess = true;
       }
-      
-      console.log('Application stored successfully:', submission);
     } catch (error) {
       console.error('Error during Supabase insert operation:', error);
-      return NextResponse.json(
-        { error: 'An unexpected error occurred while saving your application to the database.' },
-        { status: 500 }
-      );
+      dbSuccess = false;
+      // We won't return an error here either, continue with email sending
     }
     
-    // Send email notification
+    // Always attempt to send email, regardless of database success
+    console.log('Sending email notification via Nodemailer...');
     const emailResult = await sendApplicationEmail({
       fullName,
       phoneNumber,
@@ -217,21 +252,83 @@ export async function POST(request: NextRequest) {
       drivingExperience
     });
     
-    if (!emailResult.success) {
-      console.warn('Email notification failed to send, but application was saved.', emailResult.error);
+    const emailSuccess = emailResult.success;
+    
+    if (!emailSuccess) {
+      console.warn('Email notification failed to send:', emailResult.error);
+    } else {
+      console.log('Email notification sent successfully.');
     }
     
-    // Return success response
-    return NextResponse.json(
-      {
-        success: true,
-        message: 'Your application has been submitted successfully. We will review it and contact you soon.'
-      },
-      { status: 200 }
-    );
+    // Craft response based on what worked
+    if (dbSuccess && emailSuccess) {
+      return NextResponse.json(
+        {
+          success: true,
+          message: 'Your application has been submitted successfully. We will review it and contact you soon.'
+        },
+        { status: 200 }
+      );
+    } else if (dbSuccess) {
+      return NextResponse.json(
+        {
+          success: true,
+          message: 'Your application has been saved to our database, but there was an issue sending the email notification.'
+        },
+        { status: 200 }
+      );
+    } else if (emailSuccess) {
+      return NextResponse.json(
+        {
+          success: true,
+          message: 'Your application has been received via email, but there was an issue saving it to our database.'
+        },
+        { status: 200 }
+      );
+    } else {
+      // Neither worked
+      return NextResponse.json(
+        {
+          error: 'We were unable to process your application at this time. Please try again later or contact us directly.'
+        },
+        { status: 500 }
+      );
+    }
     
   } catch (error) {
     console.error('Unhandled error in application form API:', error);
+    
+    try {
+      // Even if the database storage fails, try to send the email notification if we can extract data from the request
+      let applicationData = null;
+      
+      try {
+        // Try to re-extract the data from the request
+        applicationData = await request.json();
+      } catch (parseError) {
+        console.error('Could not parse request data for email fallback:', parseError);
+      }
+      
+      if (applicationData) {
+        console.log('Attempting to send email notification despite database error...');
+        const emailResult = await sendApplicationEmail(applicationData);
+        
+        if (emailResult.success) {
+          console.log('Email notification sent successfully despite database error.');
+          return NextResponse.json(
+            {
+              success: true,
+              message: 'Your application has been received via email, but there was an issue saving it to our database. Our team will still review your submission.'
+            },
+            { status: 200 }
+          );
+        }
+      }
+    } catch (emailError) {
+      console.error('Failed to send email after database error:', emailError);
+    }
+    
+    // If both database and email fail, return error
     return NextResponse.json(
       {
         error: 'An unexpected error occurred while processing your application.',

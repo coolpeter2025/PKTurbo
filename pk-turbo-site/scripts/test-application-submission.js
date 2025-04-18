@@ -11,12 +11,19 @@
 
 const fs = require('fs');
 const path = require('path');
-const fetch = require('node-fetch');
-const FormData = require('form-data');
 
 // Load environment variables from .env.local if not in production
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config({ path: '.env.local' });
+}
+
+// Using require for node-fetch
+let fetch;
+try {
+  fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+} catch (error) {
+  console.error('Error importing node-fetch:', error);
+  process.exit(1);
 }
 
 async function testApplicationSubmission() {
@@ -26,10 +33,7 @@ async function testApplicationSubmission() {
   
   console.log('🧪 Testing application submission to:', url);
   
-  // Create a FormData instance
-  const formData = new FormData();
-  
-  // Add application fields to the form data
+  // Application data as JSON - matches the expected format by the API
   const testApplicationData = {
     fullName: 'Test Applicant',
     phoneNumber: '555-123-4567',
@@ -45,31 +49,26 @@ async function testApplicationSubmission() {
     drivingExperience: 'I have 5 years of experience driving commercial vehicles including Class A CDL.',
   };
   
-  // Append all fields to the FormData
-  Object.entries(testApplicationData).forEach(([key, value]) => {
-    formData.append(key, value);
-  });
-  
-  // Add a sample resume file if it exists
-  const sampleResumePath = path.join(__dirname, 'sample-resume.pdf');
+  // Log the sample resume path (but we're not using it as the API now expects JSON)
+  const sampleResumePath = path.join(__dirname, 'sample-resume.txt');
   if (fs.existsSync(sampleResumePath)) {
-    formData.append('resume', fs.createReadStream(sampleResumePath), {
-      filename: 'sample-resume.pdf',
-      contentType: 'application/pdf',
-    });
-    console.log('📎 Attaching sample resume file:', sampleResumePath);
-  } else {
-    console.log('⚠️ No sample resume found at:', sampleResumePath);
-    console.log('Test will proceed without resume file attachment.');
+    console.log('📎 Sample resume file exists at:', sampleResumePath);
+    console.log('Note: Resume file upload has been removed from the API');
   }
   
   try {
     console.log('📤 Submitting application data...');
     
-    // Submit the form data
-    const response = await fetch(url, {
+    // Using dynamic import for node-fetch
+    const nodeFetch = await import('node-fetch');
+    
+    // Submit the JSON data
+    const response = await nodeFetch.default(url, {
       method: 'POST',
-      body: formData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(testApplicationData),
     });
     
     // Parse the response
@@ -81,10 +80,6 @@ async function testApplicationSubmission() {
       
       console.log('\n📋 Database entry should have been created');
       console.log('📧 Email should have been sent to:', process.env.NOTIFICATION_EMAIL || 'operations@pkturbollc.com');
-      
-      if (formData.has('resume')) {
-        console.log('📁 Resume should have been uploaded to Supabase Storage');
-      }
     } else {
       console.error('❌ Test failed with status:', response.status);
       console.error('Error details:', result);
