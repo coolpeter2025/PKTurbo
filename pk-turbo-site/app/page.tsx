@@ -45,10 +45,10 @@ export default function Home() {
       {/* Services Section */}
       <section className="py-20 bg-gray-400">
         <div className="container">
-          <h2 className="text-4xl font-bold text-center mb-3 text-navy-dark">How We Serve You</h2>
+          <h2 className="text-4xl font-bold text-center mb-3 text-navy-dark">Areas We Serve</h2>
           <div className="w-24 h-1 bg-amber-400 mx-auto mb-12"></div>
             <p className="text-center max-w-3xl mx-auto mb-16 text-gray-800 leading-relaxed">
-              Our expedited trucking company specializes in seamless, coast-to-coast freight transportation across North America. With a focus on efficiency, reliability, and professionalism, we provide comprehensive logistics solutions tailored to your delivery needs. Whether shipping from New York to Los Angeles, Vancouver to Miami, or anywhere throughout the U.S. and Canada, our dependable, door-to-door service ensures your cargo arrives safely, securely, and promptly—every time.
+              Our expedited trucking company provides efficient, reliable, and professional door-to-door freight transportation across the U.S. and Canada, ensuring your cargo arrives safely and promptly every time.
             </p>
           
           <div className="grid md:grid-cols-3 gap-8">
