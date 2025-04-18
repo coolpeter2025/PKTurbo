@@ -112,13 +112,14 @@ export default function Home() {
                 Learn More About Us
               </Link>
             </div>
-            <div className="md:w-1/2 relative h-80 w-full">
+            <div className="md:w-1/2 relative h-96 w-full">
               <Image
                 src="/images/logo.png"
                 alt="PK Turbo logo"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 style={{ objectFit: 'contain' }}
+                className="scale-125"
               />
             </div>
           </div>
