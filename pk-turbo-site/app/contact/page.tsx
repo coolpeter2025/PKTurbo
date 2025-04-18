@@ -80,12 +80,7 @@ export default function ContactPage() {
             <div className="mt-8 bg-white p-6 rounded-lg shadow-md">
               <h2 className="text-2xl font-bold mb-4">Areas We Serve</h2>
               <p className="mb-4">
-                PK Turbo LLC proudly provides transportation services throughout the New York metropolitan area, 
-                including all five boroughs, Long Island, and parts of New Jersey and Connecticut.
-              </p>
-              <p>
-                Need service outside our regular coverage area? Contact us to discuss your specific needs, 
-                and we'll work to accommodate your requirements.
+                Our expedited trucking company provides efficient, reliable, and professional door-to-door freight transportation across the U.S. and Canada, ensuring your cargo arrives safely and promptly every time.
               </p>
             </div>
           </div>
