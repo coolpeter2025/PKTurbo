@@ -182,10 +182,15 @@ export async function POST(request: NextRequest) {
       }
       
       // Type validation
-      const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+      const allowedTypes = [
+        'application/pdf',
+        'application/msword',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'text/plain' // Allow plain text files for testing
+      ];
       if (!allowedTypes.includes(resumeFile.type)) {
         return NextResponse.json(
-          { error: 'Invalid file type. Only PDF and Word documents are allowed.' },
+          { error: 'Invalid file type. Only PDF, Word documents, and plain text files are allowed.' },
           { status: 400 }
         );
       }
@@ -215,23 +220,49 @@ export async function POST(request: NextRequest) {
       resume_url: resumeUrl || null
     };
     
-    // Insert into Supabase
-    console.log('Inserting application into Supabase...');
-    const { data: submission, error: insertError } = await supabase
-      .from('PK_Turbo_Application')
-      .insert(applicationData)
-      .select()
-      .single();
+    let submission = null;
+    let insertError = null;
+    
+    try {
+      // Insert into Supabase
+      console.log('Inserting application into Supabase...');
+      const result = await supabase
+        .from('PK_Turbo_Application')
+        .insert(applicationData)
+        .select()
+        .single();
+        
+      submission = result.data;
+      insertError = result.error;
+
+      if (insertError) {
+        console.error('Supabase insert error:', insertError);
+        
+        // Check if it's a "relation does not exist" error
+        if (insertError.message?.includes('relation') && insertError.message?.includes('does not exist')) {
+          return NextResponse.json(
+            { 
+              error: 'The Supabase table "PK_Turbo_Application" has not been created yet. Please run the SQL script in "supabase-application-table.sql" to create the necessary table.',
+              details: 'See instructions in docs/supabase-setup-guide.md'
+            },
+            { status: 500 }
+          );
+        }
+        
+        return NextResponse.json(
+          { error: 'Database error storing application.', details: insertError.message },
+          { status: 500 }
+        );
+      }
       
-    if (insertError) {
-      console.error('Supabase insert error:', insertError);
+      console.log('Application stored successfully:', submission);
+    } catch (error) {
+      console.error('Error during Supabase insert operation:', error);
       return NextResponse.json(
-        { error: 'Database error storing application.', details: insertError.message },
+        { error: 'An unexpected error occurred while saving your application to the database.' },
         { status: 500 }
       );
     }
-    
-    console.log('Application stored successfully:', submission);
     
     // Send email notification
     const emailResult = await sendApplicationEmail({
