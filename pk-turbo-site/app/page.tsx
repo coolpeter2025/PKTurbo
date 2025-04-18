@@ -100,7 +100,7 @@ export default function Home() {
           <h2 className="text-4xl font-bold text-center mb-3 text-navy-dark">About PK Turbo LLC</h2>
           <div className="w-24 h-1 bg-amber-400 mx-auto mb-16"></div>
           
-          <div className="flex flex-col md:flex-row items-center gap-12">
+          <div className="flex flex-col md:flex-row items-center gap-16">
             <div className="md:w-1/2">
               <p className="mb-6 text-gray-700 leading-relaxed">
                 PK Turbo LLC is a trusted name in the transportation industry, specializing in reliable and efficient expedited trucking services. We cater to businesses throughout the region requiring time-sensitive deliveries and dedicated transport solutions.
@@ -112,15 +112,16 @@ export default function Home() {
                 Learn More About Us
               </Link>
             </div>
-            <div className="md:w-1/2 relative h-96 w-full">
-              <Image
-                src="/images/logo.png"
-                alt="PK Turbo logo"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                style={{ objectFit: 'contain' }}
-                className="scale-125"
-              />
+            <div className="md:w-1/2 flex justify-center items-center">
+              <div className="relative w-4/5 h-64">
+                <Image
+                  src="/images/logo.png"
+                  alt="PK Turbo logo"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
             </div>
           </div>
         </div>
