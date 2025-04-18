@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative h-[90vh] bg-navy-dark text-white flex items-center">
+      <section className="relative h-[70vh] bg-navy-dark text-white flex items-center">
         {/* Background Image */}
         <div className="absolute inset-0 z-0 opacity-40">
           <Image
