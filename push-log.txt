@@ -6,33 +6,10 @@ Your branch is up to date with 'origin/main'.
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-	modified:   pk-turbo-site/app/api/contact/route.ts
-	modified:   pk-turbo-site/package-lock.json
-	modified:   pk-turbo-site/package.json
+  (commit or discard the untracked or modified content in submodules)
+	modified:   UserszampiDocumentsClineMCPfetch-mcp (modified content, untracked content)
 	modified:   push-log.txt
-	modified:   vercel.json
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-	UserszampiDocumentsClineMCPfetch-mcp/
-	check-fetch-mcp-status.js
-	check-fetch-mcp-status.mjs
-	check-mcp-servers.js
-	check-mcp-servers.mjs
-	check-mcp-status.js
-	fix-all-mcp-servers.js
-	fix-git-server.js
-	fix-supabase-server.js
-	fix-weather-server.js
-	mcp-server-fixes.md
-	mcp-server-guide.md
-	mcp-server-status.md
-	pk-turbo-site/.env.local.example
-	pk-turbo-site/docs/
-	pk-turbo-site/scripts/
-	private-repository-guidance.md
-	push-to-github-nodemailer.bat
-	test-weather-server.js
+	modified:   push-to-github-nodemailer.bat
 
 no changes added to commit (use "git add" and/or "git commit -a")
  

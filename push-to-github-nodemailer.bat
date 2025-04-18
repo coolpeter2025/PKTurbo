@@ -16,7 +16,7 @@ git commit -m "Implement Gmail SMTP for contact form notifications" >> push-log.
 echo. >> push-log.txt
 
 echo Setting remote repository... >> push-log.txt
-git remote set-url origin https://github.com/coolpeter2025/coffee.git >> push-log.txt 2>&1
+git remote set-url origin https://github.com/coolpeter2025/PKTurbo.git >> push-log.txt 2>&1
 echo. >> push-log.txt
 
 echo Pushing to GitHub master branch... >> push-log.txt
