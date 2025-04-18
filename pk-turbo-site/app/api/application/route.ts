@@ -156,8 +156,7 @@ export async function POST(request: NextRequest) {
       license_suspended: licenseSuspended,
       dui: dui,
       felony: felony,
-      driving_experience: drivingExperience || null,
-      // Resume URL field removed as requested
+      driving_experience: drivingExperience || null
     };
     
     let submission = null;
