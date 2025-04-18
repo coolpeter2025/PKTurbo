@@ -103,24 +103,22 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    // For multipart form data, we need to handle it differently
-    const formData = await request.formData();
+    // Parse JSON data from request body instead of FormData
+    const data = await request.json();
     
-    // Extract fields
-    const fullName = formData.get('fullName') as string;
-    const phoneNumber = formData.get('phoneNumber') as string;
-    const email = formData.get('email') as string;
-    const dateOfBirth = formData.get('dateOfBirth') as string;
-    const address = formData.get('address') as string;
-    const driversLicenseNumber = formData.get('driversLicenseNumber') as string;
-    const driversLicenseState = formData.get('driversLicenseState') as string;
-    const driversLicenseExpiration = formData.get('driversLicenseExpiration') as string;
-    const licenseSuspended = formData.get('licenseSuspended') as string;
-    const dui = formData.get('dui') as string;
-    const felony = formData.get('felony') as string;
-    const drivingExperience = formData.get('drivingExperience') as string;
-    
-    // Resume file upload removed as requested
+    // Extract fields from JSON body
+    const fullName = data.fullName;
+    const phoneNumber = data.phoneNumber;
+    const email = data.email;
+    const dateOfBirth = data.dateOfBirth;
+    const address = data.address;
+    const driversLicenseNumber = data.driversLicenseNumber;
+    const driversLicenseState = data.driversLicenseState;
+    const driversLicenseExpiration = data.driversLicenseExpiration;
+    const licenseSuspended = data.licenseSuspended;
+    const dui = data.dui;
+    const felony = data.felony;
+    const drivingExperience = data.drivingExperience || '';
     
     // Validate required fields
     if (!fullName || !phoneNumber || !email || !dateOfBirth || !address || 

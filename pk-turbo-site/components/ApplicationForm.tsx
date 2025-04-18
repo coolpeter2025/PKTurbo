@@ -38,21 +38,13 @@ export default function ApplicationForm() {
     setSubmitStatus({});
 
     try {
-      // Create FormData object for multipart/form-data (for file upload)
-      const formData = new FormData();
-      
-      // Add all text fields
-      Object.entries(data).forEach(([key, value]) => {
-        formData.append(key, value);
-      });
-      
-      // Resume file upload has been removed as requested
-
-      // Send to API endpoint
+      // Send to API endpoint using JSON instead of FormData
       const response = await fetch('/api/application', {
         method: 'POST',
-        body: formData,
-        // Don't set Content-Type header; browser will set it with boundary for FormData
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
       });
       
       const result = await response.json();
