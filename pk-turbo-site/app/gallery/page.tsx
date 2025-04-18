@@ -16,19 +16,6 @@ export default function GalleryPage() {
       description: 'Reliable and well-maintained box trucks for efficient deliveries.',
     },
     {
-      src: '/images/cargo1.png',
-      alt: 'PK Turbo cargo van',
-      title: 'Cargo Vans',
-      description: 'Perfect for smaller deliveries and urban areas with tight spaces.',
-    },
-    // Note: liftgate.png was removed, so temporarily using another cargo image
-    {
-      src: '/images/cargo1.png',
-      alt: 'PK Turbo truck with liftgate',
-      title: 'Liftgate Equipped Trucks',
-      description: 'Our vehicles have liftgates for easy loading and unloading of heavy items.',
-    },
-    {
       src: '/images/cargo.strapped.png',
       alt: 'PK Turbo secured shipment',
       title: 'Secure Shipment Transport',
