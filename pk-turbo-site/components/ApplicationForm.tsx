@@ -21,7 +21,6 @@ type FormData = {
 
 export default function ApplicationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [submitStatus, setSubmitStatus] = useState<{
     success?: boolean;
     message?: string;
@@ -33,11 +32,6 @@ export default function ApplicationForm() {
     reset,
     formState: { errors },
   } = useForm<FormData>();
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0] || null;
-    setResumeFile(file);
-  };
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
@@ -52,10 +46,7 @@ export default function ApplicationForm() {
         formData.append(key, value);
       });
       
-      // Add resume file if selected
-      if (resumeFile) {
-        formData.append('resume', resumeFile);
-      }
+      // Resume file upload has been removed as requested
 
       // Send to API endpoint
       const response = await fetch('/api/application', {
@@ -77,7 +68,6 @@ export default function ApplicationForm() {
       
       // Reset form and file input
       reset();
-      setResumeFile(null);
       
     } catch (error) {
       console.error('Application submission error:', error);
@@ -320,26 +310,7 @@ export default function ApplicationForm() {
           ></textarea>
         </div>
 
-        <div className="md:col-span-2">
-          <label htmlFor="resume" className="block text-sm font-medium text-gray-700 mb-1">
-            Attach Resume
-          </label>
-          <input
-            type="file"
-            id="resume"
-            accept=".pdf,.doc,.docx"
-            onChange={handleFileChange}
-            className="w-full px-4 py-2 border rounded-md focus:ring-pk-blue focus:border-pk-blue"
-          />
-          <p className="mt-1 text-xs text-gray-500">
-            Accepted formats: PDF, DOC, DOCX. Maximum file size: 5MB.
-          </p>
-          {resumeFile && (
-            <p className="mt-1 text-sm text-green-600">
-              Selected file: {resumeFile.name}
-            </p>
-          )}
-        </div>
+        {/* Resume attachment section removed as requested */}
       </div>
 
       <div className="mt-8">
