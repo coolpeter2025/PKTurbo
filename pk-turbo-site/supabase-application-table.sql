@@ -15,8 +15,7 @@ CREATE TABLE public.PK_Turbo_Application (
     license_suspended TEXT NOT NULL,
     dui TEXT NOT NULL,
     felony TEXT NOT NULL,
-    driving_experience TEXT,
-    resume_url TEXT
+    driving_experience TEXT
 );
 
 -- Add comment to table
