@@ -4,6 +4,14 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
   },
+  env: {
+    NEXT_PUBLIC_SUPABASE_URL: "https://stagfacvrlrtstshuwux.supabase.co",
+    SUPABASE_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN0YWdmYWN2cmxydHN0c2h1d3V4Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MDgxMjQxNiwiZXhwIjoyMDU2Mzg4NDE2fQ.I4qNsFwSe_4YN5N03dXX990U7YpcPGN1g5evT6TLf94",
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN0YWdmYWN2cmxydHN0c2h1d3V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA4MTI0MTYsImV4cCI6MjA1NjM4ODQxNn0.kwkdfeOCQx5cnq98loS9pFPkdKHr2OKHdyy1p_PGFfc",
+    EMAIL_USER: "pkturbollc@gmail.com",
+    EMAIL_PASSWORD: "helnnkizwhlyoraa",
+    NOTIFICATION_EMAIL: "operations@pkturbollc.com"
+  }
 };
 
 export default nextConfig;
