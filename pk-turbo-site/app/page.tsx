@@ -48,7 +48,7 @@ export default function Home() {
           <h2 className="text-4xl font-bold text-center mb-3 text-navy-dark">How We Serve You</h2>
           <div className="w-24 h-1 bg-amber-400 mx-auto mb-12"></div>
             <p className="text-center max-w-3xl mx-auto mb-16 text-black font-bold">
-              Our expedited trucking company focuses on providing reliable transportation services with efficiency and professionalism to meet all your delivery needs.
+              Our expedited trucking company specializes in seamless, coast-to-coast freight transportation across North America. With a focus on efficiency, reliability, and professionalism, we provide comprehensive logistics solutions tailored to your delivery needs. Whether shipping from New York to Los Angeles, Vancouver to Miami, or anywhere throughout the U.S. and Canada, our dependable, door-to-door service ensures your cargo arrives safely, securely, and promptly—every time.
             </p>
           
           <div className="grid md:grid-cols-3 gap-8">
